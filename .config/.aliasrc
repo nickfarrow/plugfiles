@@ -20,5 +20,7 @@ alias ra='ranger'
 
 
 alias cb='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
+alias STARWARS='telnet towel.blinkenlights.nl'
+
 
 # test Alias
