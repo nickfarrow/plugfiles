@@ -1,10 +1,11 @@
 #!/bin/bash
 
-for DOTFILE in `find $HOME/plugfiles`
-do
-  [ -f “$DOTFILE” ] && source “$DOTFILE”
-done
+CFGLOC=$HOME/.config
 
+#for DOTFILE in `find $HOME/plugfiles`
+#do
+#  [ -f “$DOTFILE” ] && source “$DOTFILE”
+#done
 
 # Multinest Path
 export LD_LIBRARY_PATH=$HOME/MultiNest/lib/:$LD_LIBRARY_PATH
@@ -27,4 +28,5 @@ HISTFILESIZE=
 # Debugging
 #echo "Loaded .bash_profile"
 
-
+# STARSHELL WELCOME MSG
+source $CFGLOC/starshell.sh
