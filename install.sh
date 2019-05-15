@@ -4,6 +4,8 @@
 PLUGLOC=$HOME/plugfiles
 CFGLOC=$HOME/.config
 
+[ -f $CFGLOC ] || mkdir $CFGLOC
+
 for CFGFOLDER in $PLUGLOC/.config/*/
 do
   FOLDERNAME=$(basename $CFGFOLDER)
