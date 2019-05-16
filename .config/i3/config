@@ -6,7 +6,7 @@
 
 # WINDOWS KEY MODIFIER
 set $mod Mod4
-set $mod2 Mod1
+#set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -49,7 +49,8 @@ bar {
     position top
     height 10 
     #i3bar_command i3bar -t 
-    status_command i3status
+    #status_command i3status
+    status_command ~/.config/i3/statusbar.sh
 } 
 
 
