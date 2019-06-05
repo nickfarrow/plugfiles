@@ -2,6 +2,14 @@
 
 CFGLOC=$HOME/.config
 
+# start X if on TTY 1
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]
+  then
+  exec startx
+fi
+
+
+
 #for DOTFILE in `find $HOME/plugfiles`
 #do
 #  [ -f “$DOTFILE” ] && source “$DOTFILE”

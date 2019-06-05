@@ -3,6 +3,9 @@ alias grep="grep --color=auto"
 
 alias prox='sudo openvpn --config client1.ovpn'
 alias digo='ssh root@165.227.51.160'
+alias lgs='ligo-proxy-init nicholas.farrow'
+alias ligo='gsissh ldas-pcdev1.ligo.caltech.edu'
+
 
 # DEL
 alias uskeys='setxkbmap -layout us'
@@ -22,5 +25,6 @@ alias ra='ranger'
 alias cb='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
 alias STARWARS='telnet towel.blinkenlights.nl'
 
+alias ytdl="youtube-dl --write-thumbnail --add-metadata"
 
 # test Alias
