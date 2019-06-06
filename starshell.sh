@@ -10,7 +10,7 @@ STARTSCENE=115
 
 # If $STARTSCENE scene file does not exist, save starwars to file
 if [ ! -f $SCENEDIR/s_$STARTSCENE ]; then
-    #telnet towel.blinkenlights.nl | sed -e 's/.\[H/Z/g' | tee $SCENEDIR/main
+    telnet towel.blinkenlights.nl | sed -e 's/.\[H/Z/g' | tee $SCENEDIR/main
 
     SCENEDATA=$(<"$SCENEDIR/main")
 
