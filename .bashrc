@@ -118,9 +118,14 @@ fi
 
 # added by Anaconda3 installer
 export PATH="/home/nick/anaconda3/bin:$PATH"
+export PATH=~/anaconda3/bin:$PATH
 export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+
+
+# MOUNT SEAGATE DRIVE
+#sudo mount /dev/sda1 /media/sea
 
 
 export SPLASH_DIR=$HOME/splash

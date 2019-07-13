@@ -1,6 +1,7 @@
 #!/bin/bash
 
-CFGLOC=$HOME/.config
+CFG=$HOME/.config
+SHD=/media/sea/
 
 # start X if on TTY 1
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]
@@ -37,4 +38,4 @@ HISTFILESIZE=
 #echo "Loaded .bash_profile"
 
 # STARSHELL WELCOME MSG
-source $CFGLOC/starshell.sh
+source $CFG/starshell.sh
