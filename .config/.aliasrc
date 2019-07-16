@@ -27,4 +27,6 @@ alias STARWARS='telnet towel.blinkenlights.nl'
 
 alias ytdl="youtube-dl --write-thumbnail --add-metadata"
 
+alias mountin='sudo mount /dev/sda1 /media/sea; sudo mount /dev/sdb2 /media/SSD'
+
 # test Alias
