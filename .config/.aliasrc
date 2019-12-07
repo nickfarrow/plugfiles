@@ -8,7 +8,6 @@ alias ligo='gsissh ldas-pcdev1.ligo.caltech.edu'
 alias ligo2='gsissh ldas-pcdev2.ligo.caltech.edu'
 alias ligo3='gsissh ldas-pcdev3.ligo.caltech.edu'
 
-
 # DEL
 alias uskeys='setxkbmap -layout us'
 alias screenflip='xrandr --output DVI-I-0 --right-of HDMI-0'
@@ -22,7 +21,6 @@ alias scr='import'
 alias chrome='google-chrome'
 alias chr='google-chrome'
 alias ra='ranger'
-
 
 alias cb='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
 alias STARWARS='telnet towel.blinkenlights.nl'
