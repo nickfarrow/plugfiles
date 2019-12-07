@@ -19,6 +19,9 @@ exec --no-startup-id source $HOME/.bash_profile
 # Choose random background
 exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
+# I3 Lock, SCRIPT FROM https://github.com/petvas/i3lock-blur
+bindsym $mod+F12 exec ~/.config/i3lock/lock.sh 
+
 # Force monitor positions
 exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0
 
@@ -26,12 +29,14 @@ exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0
 exec --no-startup-id setxkbmap -layout us
 
 # Compositor
-exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
+# exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
+
+exec --no-startup-id compton --backend glx --blur-method kawase --blur-strength 8 --config ~/.config/.compton.conf
+
 #exec_always --no-startup-id compton #--active-opacity 0.9 --blur-background #compton
 
 # I3 GAPS
-# # Not sure if this actually does anything
-for_window [class=".*"] gaps inner pixel 10
+for_window [class=".*"] gaps inner pixel 5
 for_window [class=".*"] border pixel 0
 
 # Status bar
@@ -79,6 +84,10 @@ bindsym $mod+Shift+y exec --no-startup-id i3resize left
 bindsym $mod+Shift+u exec --no-startup-id i3resize down
 bindsym $mod+Shift+i exec --no-startup-id i3resize up
 bindsym $mod+Shift+o exec --no-startup-id i3resize right
+
+
+# Rounded Corners 
+border_radius 10
 
 # Control inner gap size
 bindsym $mod+s gaps inner current plus 5
@@ -213,4 +222,63 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+
+
+set $i3_resurrect i3-resurrect
+
+# Save workspace mode.
+mode "save" {
+  bindsym 1 exec "$i3_resurrect save -w 1 --swallow=class,instance,title"
+  bindsym 2 exec "$i3_resurrect save -w 2 --swallow=class,instance,title"
+  bindsym 3 exec "$i3_resurrect save -w 3 --swallow=class,instance,title"
+  bindsym 4 exec "$i3_resurrect save -w 4 --swallow=class,instance,title"
+  bindsym 5 exec "$i3_resurrect save -w 5 --swallow=class,instance,title"
+  bindsym 6 exec "$i3_resurrect save -w 6 --swallow=class,instance,title"
+  bindsym 7 exec "$i3_resurrect save -w 7 --swallow=class,instance,title"
+  bindsym 8 exec "$i3_resurrect save -w 8 --swallow=class,instance,title"
+  bindsym 9 exec "$i3_resurrect save -w 9 --swallow=class,instance,title"
+  bindsym 0 exec "$i3_resurrect save -w 10 --swallow=class,instance,title"
+
+  # Back to normal: Enter, Escape, or s
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym m mode "default"
+  bindsym $mod+s mode "default"
+}
+
+bindsym $mod+m mode "save"
+
+# Restore workspace mode.
+mode "restore" {
+  bindsym 1 exec "$i3_resurrect restore -w 1 --programs-only"
+  bindsym 2 exec "$i3_resurrect restore -w 2 --programs-only"
+  bindsym 3 exec "$i3_resurrect restore -w 3 --programs-only"
+  bindsym 4 exec "$i3_resurrect restore -w 4 --programs-only"
+  bindsym 5 exec "$i3_resurrect restore -w 5 --programs-only"
+  bindsym 6 exec "$i3_resurrect restore -w 6 --programs-only"
+  bindsym 7 exec "$i3_resurrect restore -w 7 --programs-only"
+  bindsym 8 exec "$i3_resurrect restore -w 8 --programs-only"
+  bindsym 9 exec "$i3_resurrect restore -w 9 --programs-only"
+  bindsym 0 exec "$i3_resurrect restore -w 10 --programs-only"
+
+  bindsym $mod+1 exec "$i3_resurrect restore -w 1 --layout-only"
+  bindsym $mod+2 exec "$i3_resurrect restore -w 2 --layout-only"
+  bindsym $mod+3 exec "$i3_resurrect restore -w 3 --layout-only"
+  bindsym $mod+4 exec "$i3_resurrect restore -w 4 --layout-only"
+  bindsym $mod+5 exec "$i3_resurrect restore -w 5 --layout-only"
+  bindsym $mod+6 exec "$i3_resurrect restore -w 6 --layout-only"
+  bindsym $mod+7 exec "$i3_resurrect restore -w 7 --layout-only"
+  bindsym $mod+8 exec "$i3_resurrect restore -w 8 --layout-only"
+  bindsym $mod+9 exec "$i3_resurrect restore -w 9 --layout-only"
+  bindsym $mod+0 exec "$i3_resurrect restore -w 10 --layout-only"
+
+  # Back to normal: Enter, Escape, or n
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym n mode "default"
+  bindsym $mod+n mode "default"
+}
+
+bindsym $mod+n mode "restore"
 

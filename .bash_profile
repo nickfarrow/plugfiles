@@ -17,8 +17,9 @@ fi
 #done
 
 # Multinest Path
-export LD_LIBRARY_PATH=$HOME/MultiNest/lib/:$LD_LIBRARY_PATH
-
+#export LD_LIBRARY_PATH=$HOME/MultiNest/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=~/repos/MultiNest/lib/:$LD_LIBRARY_PATH
+export PATH=~/.local/bin:$PATH
 
 # Autocomplete without case matching
 set completion-ignore-case on
