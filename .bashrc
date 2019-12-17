@@ -127,6 +127,21 @@ export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 # MOUNT SEAGATE DRIVE
 #sudo mount /dev/sda1 /media/sea
 
+# Enable delete key in st-terminal 
+tput smkx
+
+# Reverse scroll direction on trackpad
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -113 -113
+# Touch click
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0 0 0 0 1 3 2
+# horizontal scroll
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
+
+# Load .xresources theme (transparency for st)
+xrdb ~/.Xresources
+
+# Start flameshot running in backgroung
+flameshot &
 
 export SPLASH_DIR=$HOME/splash
 export NDSPMHD_DIR=~/Downloads/ndspmhd

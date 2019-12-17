@@ -29,7 +29,7 @@ do
 
     BTC=$(crypto_rate "BTC")
     ETH=$(crypto_rate "ETH")
-    RATIO=$(bc <<< "scale=5;$ETH/$BTC")
+    RATIO=$(bc <<< "scale=4;$ETH/$BTC")
 
-    echo -e "$NORD | ${RED}BTC:$BTC  ETH:$ETH  ETH/BTC:$RATIO |  $line" || exit 1  
+    echo -e "$NORD | ${RED}BTC: $BTC  ETH: $ETH  ETH/BTC: 0$RATIO |  $line" || exit 1  
 done

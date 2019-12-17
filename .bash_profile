@@ -4,10 +4,10 @@ CFG=$HOME/.config
 SHD=/media/sea/
 
 # start X if on TTY 1
-if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]
-  then
-  exec startx
-fi
+#if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]
+#  then
+#  exec startx
+#fi
 
 
 
@@ -20,6 +20,9 @@ fi
 #export LD_LIBRARY_PATH=$HOME/MultiNest/lib/:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=~/repos/MultiNest/lib/:$LD_LIBRARY_PATH
 export PATH=~/.local/bin:$PATH
+
+# Ruby excecutables
+export PATH="$PATH:/home/nick/.gem/ruby/2.6.0/bin"
 
 # Autocomplete without case matching
 set completion-ignore-case on

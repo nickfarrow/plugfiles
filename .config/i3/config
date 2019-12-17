@@ -30,10 +30,10 @@ exec --no-startup-id setxkbmap -layout us
 
 # Compositor
 # exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
-
-exec --no-startup-id compton --backend glx --blur-method kawase --blur-strength 8 --config ~/.config/.compton.conf
-
+exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
 #exec_always --no-startup-id compton #--active-opacity 0.9 --blur-background #compton
+
+
 
 # I3 GAPS
 for_window [class=".*"] gaps inner pixel 5
@@ -43,8 +43,10 @@ for_window [class=".*"] border pixel 0
 bar {
     # Height in pixels
     position top
-    height 10 
+    height 20 
     
+    font pango:Terminus 12px    
+ 
     #status_command i3status
     # Custom i3status bar
     status_command ~/.config/i3/statusbar.sh
@@ -52,12 +54,12 @@ bar {
 
 
 # Application Shortcuts
-bindsym $mod+F1 exec google-chrome 
+bindsym $mod+F1 exec google-chrome-stable 
 bindsym $mod+F2 exec nautilus
 bindsym $mod+F3 exec firefox
-bindsym $mod+F4 exec wine '/media/sea/Games/wow/World of Warcraft/WoW.exe'
+#bindsym $mod+F4 
 bindsym $mod+F5 exec s-tui
-bindsym $mod+F6 exec google-chrome 
+bindsym $mod+F6 exec google-chrome-stable
 
 # printscreen takes screenshot with flameshot
 bindsym Print exec flameshot gui
@@ -68,7 +70,8 @@ bindsym Print exec flameshot gui
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
+#bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+\ exec xterm
 
 # kill focused window
