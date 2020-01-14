@@ -22,11 +22,17 @@ alias chrome='google-chrome'
 alias chr='google-chrome'
 alias ra='ranger'
 
-alias cb='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
+alias cbnt='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
+alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.3 -l'
+alias cbs='wal -i ~/Pictures/Wallpapers/ -l --saturate '
+
 alias STARWARS='telnet towel.blinkenlights.nl'
 
 alias ytdl="youtube-dl --write-thumbnail --add-metadata"
 
 alias mountin='sudo mount /dev/sda1 /media/sea; sudo mount /dev/sdb2 /media/SSD'
+
+alias pipu='python3 -m pip install --user'
+
 
 # test Alias
