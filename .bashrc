@@ -140,8 +140,9 @@ xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 
 # Load .xresources theme (transparency for st)
 xrdb ~/.Xresources
 
-# Start flameshot running in backgroung
-flameshot &
+# Load pywal theme
+# Already done by luke's st fork
+(cat ~/.cache/wal/sequences &)
 
 export SPLASH_DIR=$HOME/splash
 export NDSPMHD_DIR=~/Downloads/ndspmhd
@@ -152,3 +153,4 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SPLASH_DIR/giza/lib
 if [ -f ~/.bash_profile ]; then
   . ~/.bash_profile
 fi
+
