@@ -14,12 +14,18 @@ nordvpn_status () {
     echo "$CONNSTAT $COUNTRY$IP"
 }
 
+optimus_status () {
+    echo "$(optimus-manager --print-mode | grep mode | tr " " \\n | tail -1)"
+}
+
 
 i3status | while :
 do
     # Save output of i3status (generic time date space info) to $line
     read line
-   
+    
+    OPTIMUS=$(optimus_status)
+
     # Get NordVPN status
     if command -v nordvpn &> /dev/null; then
         NORD=$(nordvpn_status)
@@ -31,5 +37,5 @@ do
     ETH=$(crypto_rate "ETH")
     RATIO=$(bc <<< "scale=4;$ETH/$BTC")
 
-    echo -e "$NORD | ${RED}BTC: $BTC  ETH: $ETH  ETH/BTC: 0$RATIO |  $line" || exit 1  
+    echo -e "$OPTIMUS |  $NORD | ${RED}BTC: $BTC  ETH: $ETH  ETH/BTC: 0$RATIO |  $line" || exit 1  
 done
