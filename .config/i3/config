@@ -17,7 +17,10 @@ workspace 2 output DVI-I-0
 exec --no-startup-id source $HOME/.bash_profile
 
 # Choose random background
-exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+#exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
+
+# Choose random background with associated color theme
+exec --no-startup-id wal -i ~/Pictures/Wallpapers/ -l
 
 # I3 Lock, SCRIPT FROM https://github.com/petvas/i3lock-blur
 bindsym $mod+F12 exec ~/.config/i3lock/lock.sh 
