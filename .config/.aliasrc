@@ -23,7 +23,7 @@ alias chr='google-chrome'
 alias ra='ranger'
 
 alias cbnt='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
-alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.3 -l'
+alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.4 -l && (cat ~/.cache/wal/sequences &)'
 alias cbs='wal -i ~/Pictures/Wallpapers/ -l --saturate '
 
 alias STARWARS='telnet towel.blinkenlights.nl'

@@ -2,6 +2,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # WINDOWS KEY MODIFIER
+# "The button for i3 commands"
 set $mod Mod4
 #set $mod Mod1
 
@@ -13,7 +14,7 @@ font pango:monospace 8
 workspace 1 output HDMI-0
 workspace 2 output DVI-I-0
 
-# SOURCE BASH_PROFILE
+# Load bash_profile on startup
 exec --no-startup-id source $HOME/.bash_profile
 
 # Choose random background
@@ -32,28 +33,29 @@ exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0
 exec --no-startup-id setxkbmap -layout us
 
 # Compositor
-# exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
-exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
-#exec_always --no-startup-id compton #--active-opacity 0.9 --blur-background #compton
+#exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
+exec_always --no-startup-id compton --blur-background --blur-method kawase --blur-strength 8 --opacity-rule 30:'class_g="st"' --backend glx
 
-
+# Flameshot screenshotting tool startup
+exec_always --no-startup-id flameshot
 
 # I3 GAPS
-for_window [class=".*"] gaps inner pixel 5
 for_window [class=".*"] border pixel 0
 
 # Status bar
-bar {
-    # Height in pixels
-    position top
-    height 20 
-    
-    font pango:Terminus 12px    
- 
-    #status_command i3status
-    # Custom i3status bar
-    status_command ~/.config/i3/statusbar.sh
-}
+#bar {
+#    # Height in pixels
+#    position top
+#    height 20 
+#    
+#    font pango:Terminus 12px    
+# 
+#    #status_command i3status
+#    # Custom i3status bar
+#    status_command ~/.config/i3/statusbar.sh
+#}
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # Application Shortcuts
@@ -198,7 +200,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec --no-startup-id pkill compton; restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 session?' -B 'Yes, exit i3' 'i3-msg exit'"
 
