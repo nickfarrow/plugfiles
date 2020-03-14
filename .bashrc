@@ -122,7 +122,7 @@ export PATH=~/anaconda3/bin:$PATH
 export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 
 # MOUNT SEAGATE DRIVE
 #sudo mount /dev/sda1 /media/sea
@@ -142,6 +142,7 @@ xrdb ~/.Xresources
 
 # Load pywal theme
 # Already done by luke's st fork
+#(cat ~/.cache/wal/sequences &)
 (cat ~/.cache/wal/sequences &)
 
 export SPLASH_DIR=$HOME/splash

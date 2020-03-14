@@ -4,7 +4,8 @@
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+#while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+pkill polybar
 
 # Launch Polybar, using default config location ~/.config/polybar/config
 if type "xrandr"; then
