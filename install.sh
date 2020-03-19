@@ -3,8 +3,13 @@
 
 PLUGLOC=$HOME/plugfiles
 CFGLOC=$HOME/.config
+BINLOC=$HOME/.local/bin
 
-[ -f $CFGLOC ] || mkdir $CFGLOC
+#[ -f $CFGLOC ] || mkdir $CFGLOC
+#[ -f $BINLOC ] || mkdir $BINLOC
+
+mkdir -p $CFGLOC
+mkdir -p $BINLOC
 
 for CFGFOLDER in $PLUGLOC/.config/*/
 do
@@ -15,6 +20,8 @@ do
   [ -d "$OLDDIR" ] && echo "deleting $OLDDIR" && rm -r $OLDDIR 
   cp -R "$CFGFOLDER" "$OLDDIR"
 done
+
+cp -r ./bin/* $BINLOC/
 
 [ -f "$CFGLOC/.aliasrc" ] && rm "$CFGLOC/.aliasrc"
 cp "$PLUGLOC/.config/.aliasrc" "$CFGLOC/.aliasrc"

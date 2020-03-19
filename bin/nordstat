@@ -1,0 +1,7 @@
+#!/bin/bash
+# Nicholas Farrow 2020
+STATUS=$(nordvpn status)
+CONNSTAT=$(grep "Status:" <<< "$STATUS" | cut -d ' ' -f2)
+COUNTRY=$(grep "City:" <<< "$STATUS" | cut -d ' ' -f2)
+IP=$(grep "IP" <<< "$STATUS" | cut -d ':' -f2)
+echo "$CONNSTAT $COUNTRY$IP"

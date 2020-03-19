@@ -1,5 +1,5 @@
 #!/bin/bash
-
+PLG=$HOME/plugfiles/
 CFG=$HOME/.config
 SHD=/media/sea/
 
