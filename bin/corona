@@ -1,0 +1,8 @@
+#!/bin/sh
+#https://www.youtube.com/watch?v=cQ03v4d3QEo
+
+#grep "State\|Victoria" ~/.cache/corona |
+grep "Victoria" ~/.cache/corona |
+	sed "s/\s*//g ; s/║//g ; s/│/;/g" | 
+	sed  's/\x1b\[[0-9;]*m//g' |
+	awk -F';' '{print "😷:" $3 " (" $9 ") ☠:" $5}'

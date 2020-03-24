@@ -48,6 +48,7 @@ font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
 font-2 = siji:pixelsize=16;1
 font-3 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular
 font-4 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular
+font-5 = "Noto Color Emoji:pixelsize=16:style=Regular:scale=10;2"
 
 ;---------------;
 ; MISCELLANEOUS ;
@@ -58,7 +59,7 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = i3 crypto nordstat
+modules-left = i3 crypto nordstat corona
 modules-center = optimusgfx
 modules-right = volume memory cpu wlan battery temperature date powermenu
 
@@ -69,6 +70,12 @@ tray-detached = true
 ;---------;
 ; MODULES ;
 ;---------;
+
+[module/corona]
+type = custom/script
+exec = curl -s https://corona-stats.online/Australia > ~/.cache/corona && echo `corona`
+interval = 60
+format-prefix-font = 5
 
 [module/nordstat]
 type = custom/script

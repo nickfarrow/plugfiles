@@ -1,0 +1,8 @@
+#!/bin/sh
+# Nick Farrow 2020
+
+STAT=$(optimus-manager --print-mode 2>/dev/null | grep mode | tr " " \\n | tail -1)
+[ "$STAT" != "nvidia" ] && CHANGETO="nvidia" || CHANGETO="intel"
+echo "Switching from $STAT to $CHANGETO..."
+
+optimus-manager --switch $CHANGETO --no-confirm
