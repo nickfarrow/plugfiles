@@ -73,8 +73,8 @@ tray-detached = true
 
 [module/corona]
 type = custom/script
-exec = curl -s https://corona-stats.online/Australia > ~/.cache/corona && echo `corona`
-interval = 60
+exec = echo `corona`
+interval = 600
 format-prefix-font = 5
 
 [module/nordstat]

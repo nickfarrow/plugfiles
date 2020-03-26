@@ -1,8 +1,10 @@
 #!/bin/sh
 #https://www.youtube.com/watch?v=cQ03v4d3QEo
 
-#grep "State\|Victoria" ~/.cache/corona |
-grep "Victoria" ~/.cache/corona |
+curl -s https://corona-stats.online/Australia > ~/.cache/corona
+
+#grep "Country\|Australia" ~/.cache/corona |
+grep "Australia" ~/.cache/corona |
 	sed "s/\s*//g ; s/║//g ; s/│/;/g" | 
 	sed  's/\x1b\[[0-9;]*m//g' |
-	awk -F';' '{print "😷:" $3 " (" $9 ") ☠:" $5}'
+	awk -F';' '{print "😷:" $3 " (" $4 ") ☠:" $6}'
