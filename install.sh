@@ -25,7 +25,7 @@ cp -r $PLUGLOC/bin/* $BINLOC/
 
 [ -f "$CFGLOC/.aliasrc" ] && rm "$CFGLOC/.aliasrc"
 cp "$PLUGLOC/.config/.aliasrc" "$CFGLOC/.aliasrc"
-cp "$PLUGLOC/.config/.compton.conf" "$CFGLOC/.compton.conf"
+cp "$PLUGLOC/.config/compton.conf" "$CFGLOC/compton.conf"
 cp "$PLUGLOC/.config/emoji" "$CFGLOC/emoji"
 cp "$PLUGLOC/starshell.sh" "$CFGLOC/starshell.sh"
 cp -r "$PLUGLOC/.config/starshell" "$CFGLOC/starshell"

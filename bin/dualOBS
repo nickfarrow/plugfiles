@@ -1,6 +1,8 @@
 #!/bin/bash
 # Nick Farrow 2019
 
+VERTICAL=false
+
 # Whenever out mouse is past XSPLIT in the X-direction,
 # A hotkey is sent to OBS to change scenes
 XSPLIT=1920
@@ -11,17 +13,48 @@ RIGHT='F8'
 
 PAST=$RIGHT
 
+
+while getopts "vp:" opt; do
+	case ${opt} in
+		v )
+			VERTICAL=true
+			XSPLIT=1080
+			
+			TMPSTORE=$LEFT
+			LEFT=$RIGHT
+			RIGHT=$TMPSTORE
+		;;
+		p )
+			XSPLIT=$OPTARG
+		;;
+		\? )
+			echo "Invalid option" 1>&2
+			exit 1
+		;;
+		: )
+			echo "Invalid option, $OPTARG requires an argument" 1>&2
+			exit 1
+		;;
+	esac
+done
+
+printf "\n\n\n Starting OBS:"
+
 obs | while :
 	do
-		XCOORD=$(xdotool getmouselocation | cut -d : -f 2 | cut -d ' ' -f 1)
+		if [ "$VERTICAL" = false ] ; then
+			XCOORD=$(xdotool getmouselocation | cut -d : -f 2 | cut -d ' ' -f 1)
+		else
+			XCOORD=$(xdotool getmouselocation | cut -d : -f 3 | cut -d ' ' -f 1)
+		fi
 
-		if [ "$XCOORD" -lt "$XSPLIT" ] && [ "$PAST" == "$RIGHT" ] then
+		if [ "$XCOORD" -lt "$XSPLIT" ] && [ "$PAST" == "$RIGHT" ]; then
 			WINDOWID=$(xdotool search --name OBS | tail -1)
 			xdotool key --window $WINDOWID $LEFT
 			PAST=$LEFT
 			echo "CHANGE LEFT"
 
-		elif [ "$XCOORD" -gt "$XSPLIT" ] && [ "$PAST" == "$LEFT" ] then
+		elif [ "$XCOORD" -gt "$XSPLIT" ] && [ "$PAST" == "$LEFT" ]; then
 			WINDOWID=$(xdotool search --name OBS | tail -1)
 			xdotool key --window $WINDOWID $RIGHT
 			PAST=$RIGHT

@@ -21,6 +21,9 @@ SHD=/media/sea/
 export LD_LIBRARY_PATH=~/repos/MultiNest/lib/:$LD_LIBRARY_PATH
 export PATH=~/.local/bin:$PATH
 
+# CUDA
+export PATH=/opt/cuda/bin:$PATH
+
 # Ruby excecutables
 export PATH="$PATH:/home/nick/.gem/ruby/2.6.0/bin"
 

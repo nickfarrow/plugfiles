@@ -34,7 +34,8 @@ exec --no-startup-id setxkbmap -layout us
 
 # Compositor
 #exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
-exec_always --no-startup-id compton --blur-background --blur-method kawase --blur-strength 8 --opacity-rule 30:'class_g="st"' --backend glx
+#exec_always --no-startup-id compton --blur-background --blur-method kawase --blur-strength 8 --opacity-rule 30:'class_g="st"' --backend glx
+exec_always --no-startup-id compton --backend glx
 
 # Flameshot screenshotting tool startup
 exec_always --no-startup-id flameshot
@@ -75,6 +76,9 @@ bindsym Print exec flameshot gui
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+# Move workspace to other monitor
+bindsym $mod+p move workspace to output right
 
 # start a terminal
 bindsym $mod+Return exec st
