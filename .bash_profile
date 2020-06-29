@@ -27,6 +27,9 @@ export PATH=/opt/cuda/bin:$PATH
 # Ruby excecutables
 export PATH="$PATH:/home/nick/.gem/ruby/2.6.0/bin"
 
+# Website Dir
+SITE=~/repos/nicholasfarrow.github.io
+
 # Autocomplete without case matching
 set completion-ignore-case on
 
