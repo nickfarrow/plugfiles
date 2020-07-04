@@ -39,3 +39,9 @@ alias gs='git status'
 alias sps='sudo prime-switch && xinit'
 
 # test Alias
+
+## Raspberry pi
+
+#Bitcoin
+alias btc-info='bitcoin-cli -getinfo'
+alias btc-start='bitcoind -daemon'
