@@ -1,11 +1,11 @@
 #!/bin/bash
 # Nick Farrow 2019
 
-VERTICAL=false
+VERTICAL=true
 
 # Whenever out mouse is past XSPLIT in the X-direction,
 # A hotkey is sent to OBS to change scenes
-XSPLIT=1920
+XSPLIT=1080
 
 # Hotkeys for left and right scenes
 LEFT='F7'

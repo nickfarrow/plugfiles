@@ -145,6 +145,9 @@ xrdb ~/.Xresources
 #(cat ~/.cache/wal/sequences &)
 (cat ~/.cache/wal/sequences &)
 
+# Set capslock to escape for vim
+setxkbmap -option caps:escape
+
 export SPLASH_DIR=$HOME/splash
 export NDSPMHD_DIR=~/Downloads/ndspmhd
 export PATH=$PATH:$SPLASH_DIR/bin

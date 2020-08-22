@@ -37,6 +37,9 @@ exec --no-startup-id setxkbmap -layout us
 #exec_always --no-startup-id compton --blur-background --blur-method kawase --blur-strength 8 --opacity-rule 30:'class_g="st"' --backend glx
 exec_always --no-startup-id compton --backend glx
 
+# Launch redshift (like flux)
+exec_always --no-startup-id redshift -l -37.814:144.96332
+
 # Flameshot screenshotting tool startup
 exec_always --no-startup-id flameshot
 
@@ -65,7 +68,7 @@ exec --no-startup-id pkill polybar; polybar -r example
 bindsym $mod+F1 exec brave --disable-seccomp-filter-sandbox #google-chrome-stable 
 bindsym $mod+F2 exec nautilus
 bindsym $mod+F3 exec firefox
-bindsym $mod+F4 exec ~/install/RuneLite.AppImage
+bindsym $mod+F4 exec discord
 bindsym $mod+F5 exec s-tui
 bindsym $mod+F6 exec google-chrome-stable
 
