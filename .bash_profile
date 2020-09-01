@@ -50,6 +50,13 @@ HISTFILESIZE=
 # Debugging
 #echo "Loaded .bash_profile"
 
+# Bitcoin
+alias btcdir="cd ~/.bitcoin/"
+alias bc="bitcoin-cli"
+alias btcinfo='bitcoin-cli getwalletinfo | egrep "\"balance\""; bitcoin-cli getnetworkinfo | egrep "\"version\"|connections"; bitcoin-cli getmininginfo | egrep "\"blocks\"|errors"'
+
+
+
 # STARSHELL WELCOME MSG
 source $CFG/starshell.sh
 
