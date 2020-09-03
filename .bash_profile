@@ -26,6 +26,8 @@ export PATH=/opt/cuda/bin:$PATH
 
 # Ruby excecutables
 export PATH="$PATH:/home/nick/.gem/ruby/2.6.0/bin"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 
 # Rust Path
 PATH=~/.cargo/bin:$PATH
