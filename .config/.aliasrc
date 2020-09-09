@@ -1,6 +1,6 @@
 alias ls="ls -hN --color=auto --group-directories-first"
 alias grep="grep --color=auto"
-alias pi='ssh pi@101.173.144.190'
+alias pi='ssh pi@2001:8003:4442:d000:2f04:a126:7cab:9148'
 alias prox='sudo openvpn --config client1.ovpn'
 alias digo='ssh root@165.227.51.160'
 
