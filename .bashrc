@@ -131,11 +131,13 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 tput smkx
 
 # Reverse scroll direction on trackpad
-xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Scrolling Distance" -113 -113
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
 # Touch click
-xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 0 0 0 0 1 3 2
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 # horizontal scroll
-xinput set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
+#xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Two-Finger Scrolling" 1 1
+# Pointer speed
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.5
 
 # Load .xresources theme (transparency for st)
 xrdb ~/.Xresources
@@ -158,3 +160,5 @@ if [ -f ~/.bash_profile ]; then
   . ~/.bash_profile
 fi
 
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
