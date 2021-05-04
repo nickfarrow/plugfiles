@@ -10,7 +10,8 @@ ETH=$(crypto_rate "ETH")
 RATIO=$(bc <<< "scale=4;$ETH/$BTC")
 
 printf "BTC:%0.0f " $BTC
-printf "ETH:%0.0f " $ETH
-printf "E/B:%0.3f\n" $RATIO
+#printf "ETH:%0.0f " $ETH
+#printf "E/B:%0.3f" $RATIO
+printf "\n"
 #echo -e "BTC:$BTC ETH:$ETH ETH/BTC:0$RATIO"
 

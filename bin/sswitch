@@ -1,0 +1,11 @@
+#!/bin/sh
+# Nick Farrow 2019
+
+wal -i ~/Pictures/Wallpapers/ --saturate 0.4 -l && (cat ~/.cache/wal/sequences &)
+sleep 1
+st &
+pid=$!
+sleep 1
+kill $pid
+nohup st &
+exit 0
