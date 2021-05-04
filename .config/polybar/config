@@ -59,7 +59,7 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = i3 crypto nordstat corona
+modules-left = i3 crypto nordstat
 modules-center = optimusgfx
 modules-right = volume memory cpu wlan battery temperature date powermenu
 

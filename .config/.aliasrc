@@ -4,7 +4,10 @@ alias pi='ssh pi@124.183.138.174'
 alias prox='sudo openvpn --config client1.ovpn'
 alias digo='ssh root@165.227.51.160'
 
-alias proton='ssh root@202.182.97.180'
+alias photon='ssh root@202.182.97.180'
+#alias photon-sync="photon 'cd nickfarrow.com; git pull origin master & pwd & export LC_ALL="en_US.UTF-8" & export LANG="en_US.UTF-8" & bundle exec jekyll build'"
+
+
 
 # DEL
 alias uskeys='setxkbmap -layout us'
@@ -36,4 +39,10 @@ alias pipu='python3 -m pip install --user'
 alias gs='git status'
 alias sps='sudo prime-switch && xinit'
 
+alias whatismyip='curl https://ifconfig.me/'
+
 # test Alias
+
+
+# Electrum & Electrum personal server
+alias elec='LD_LIBRARY_PATH=/home/nick/install/electrum-4.0.5/contrib/secp256k1/dist/lib electrum --oneserver --server localhost:50002:s | ssh pi@192.168.0.252 -L 50002:localhost:50002 cat'

@@ -14,6 +14,9 @@ font pango:monospace 8
 workspace 1 output HDMI-0
 workspace 2 output DVI-I-0
 
+# Fix optimus
+exec /usr/bin/prime-offload
+
 # Load bash_profile on startup
 exec --no-startup-id source $HOME/.bash_profile
 
@@ -68,7 +71,7 @@ exec --no-startup-id pkill polybar; polybar -r example
 bindsym $mod+F1 exec brave --disable-seccomp-filter-sandbox #google-chrome-stable 
 bindsym $mod+F2 exec nautilus
 bindsym $mod+F3 exec firefox
-bindsym $mod+F4 exec discord
+bindsym $mod+F4 exec discord-canary
 bindsym $mod+F5 exec s-tui
 bindsym $mod+F6 exec google-chrome-stable
 
