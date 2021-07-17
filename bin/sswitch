@@ -7,5 +7,4 @@ st &
 pid=$!
 sleep 1
 kill $pid
-nohup st &
 exit 0
