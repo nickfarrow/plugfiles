@@ -131,13 +131,13 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 tput smkx
 
 # Reverse scroll direction on trackpad
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "Synaptics TM3512-010" "libinput Natural Scrolling Enabled" 1
 # Touch click
-xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
+xinput set-prop 'Synaptics TM3512-010' 'libinput Tapping Enabled' 1
 # horizontal scroll
 #xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Two-Finger Scrolling" 1 1
 # Pointer speed
-xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Accel Speed' 0.5
+xinput set-prop 'Synaptics TM3512-010' 'libinput Accel Speed' 0.5
 
 # Load .xresources theme (transparency for st)
 xrdb ~/.Xresources
@@ -162,3 +162,4 @@ fi
 
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
+alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
