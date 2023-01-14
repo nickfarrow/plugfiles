@@ -116,35 +116,23 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# added by Anaconda3 installer
-export PATH="/home/nick/anaconda3/bin:$PATH"
-export PATH=~/anaconda3/bin:$PATH
-export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-export PATH=/bin/lscript:/bin/lscript:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
-
-# MOUNT SEAGATE DRIVE
-#sudo mount /dev/sda1 /media/sea
-
 # Enable delete key in st-terminal 
 tput smkx
 
 # Reverse scroll direction on trackpad
-xinput set-prop "Synaptics TM3512-010" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "Synaptics TM3471-020" "libinput Natural Scrolling Enabled" 1
 # Touch click
-xinput set-prop 'Synaptics TM3512-010' 'libinput Tapping Enabled' 1
+xinput set-prop 'Synaptics TM3471-020' 'libinput Tapping Enabled' 1
 # horizontal scroll
 #xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Two-Finger Scrolling" 1 1
 # Pointer speed
-xinput set-prop 'Synaptics TM3512-010' 'libinput Accel Speed' 0.5
+xinput set-prop 'Synaptics TM3471-020' 'libinput Accel Speed' 0.3
 
 # Load .xresources theme (transparency for st)
-xrdb ~/.Xresources
+#xrdb ~/.Xresources
 
 # Load pywal theme
 # Already done by luke's st fork
-#(cat ~/.cache/wal/sequences &)
 (cat ~/.cache/wal/sequences &)
 
 # Set capslock to escape for vim
@@ -163,3 +151,4 @@ fi
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
+. "$HOME/.cargo/env"

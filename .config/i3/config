@@ -68,12 +68,9 @@ exec --no-startup-id pkill polybar; polybar -r example
 
 
 # Application Shortcuts
-bindsym $mod+F1 exec brave --disable-seccomp-filter-sandbox #google-chrome-stable 
+bindsym $mod+F1 exec firefox
 bindsym $mod+F2 exec nautilus
 bindsym $mod+F3 exec firefox
-bindsym $mod+F4 exec discord-canary
-bindsym $mod+F5 exec s-tui
-bindsym $mod+F6 exec google-chrome-stable
 
 # printscreen takes screenshot with flameshot
 bindsym Print exec flameshot gui
@@ -105,16 +102,12 @@ bindsym $mod+Shift+u exec --no-startup-id i3resize down
 bindsym $mod+Shift+i exec --no-startup-id i3resize up
 bindsym $mod+Shift+o exec --no-startup-id i3resize right
 
-
-# Rounded Corners 
-border_radius 10
-
 # Control inner gap size
 bindsym $mod+s gaps inner current plus 5
 bindsym $mod+Shift+s gaps inner current minus 5
 
 # Reset gaps
-bindsym $mod+Shift+d gaps inner current set 10; gaps outer current set 20 
+bindsym $mod+Shift+d gaps inner current set 10; gaps outer current set 0
 
 # Control outer gaps
 bindsym $mod+z gaps outer current plus 5

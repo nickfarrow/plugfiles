@@ -43,7 +43,7 @@ monitor = ${env:MONITOR:}
 ;-------;
 ; FONTS ;
 ;-------;
-font-0 = Inconsolata:style=Regular:size=14;
+font-0 = Inconsolata:style=Regular:size=12;
 font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
 font-2 = siji:pixelsize=16;1
 font-3 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular
@@ -59,8 +59,8 @@ padding-left = 2
 padding-right = 2
 module-margin = 1.5
 
-modules-left = i3 crypto nordstat
-modules-center = optimusgfx
+modules-left = i3 
+#modules-center = 
 modules-right = volume memory cpu wlan battery temperature date powermenu
 
 tray-position = none
