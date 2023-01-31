@@ -2,8 +2,6 @@
 PLG=$HOME/plugfiles/
 CFG=$HOME/.config
 
-cd ~/
-
 # Rust env
 . "$HOME/.cargo/env"
 

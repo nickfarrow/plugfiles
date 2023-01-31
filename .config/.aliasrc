@@ -24,8 +24,8 @@ alias chr='google-chrome'
 alias ra='ranger'
 
 alias cbnt='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
-alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.4' 
-alias cbs='wal -i ~/Pictures/Wallpapers/ --saturate '
+alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.4 --backend colorz' 
+alias cbs='wal -i ~/Pictures/Wallpapers/ --backend colorz --saturate '
 alias monitorstart='xrandr --output HDMI-0 --auto --above eDP-1-1 && polylaunch && cb'
 
 alias STARWARS='telnet towel.blinkenlights.nl'

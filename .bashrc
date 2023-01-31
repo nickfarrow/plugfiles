@@ -143,6 +143,11 @@ export NDSPMHD_DIR=~/Downloads/ndspmhd
 export PATH=$PATH:$SPLASH_DIR/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SPLASH_DIR/giza/lib
 
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:/home/nick/Downloads/bitcoin-23.1/bin
+export PATH=$PATH:/home/nick/install/lightning/lightningd
+export PATH=$PATH:/home/nick/install/lightning/cli
+
 #LOAD BASH_PROFILE ALSO
 if [ -f ~/.bash_profile ]; then
   . ~/.bash_profile

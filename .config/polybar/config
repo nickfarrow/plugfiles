@@ -112,7 +112,8 @@ bar-progress-fill = ─
 bar-progress-empty = ─
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
+#internal/alsa
 format-volume = VOL: <label-volume>
 format-muted = 🔈 0%
 ramp-volume-0 = 🔈
