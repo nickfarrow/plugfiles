@@ -153,6 +153,8 @@ if [ -f ~/.bash_profile ]; then
   . ~/.bash_profile
 fi
 
+export GPG_TTY=$(tty)
+
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"

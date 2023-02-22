@@ -1,0 +1,8 @@
+[user]
+	email = nick@nickfarrow.com
+	name = Nick Farrow
+	signingKey = 70B43A7892228841F81CC3B6992AF78384653A47
+[core]
+	editor = vim
+[commit]
+	gpgSign = true

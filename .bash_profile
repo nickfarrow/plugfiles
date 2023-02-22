@@ -20,5 +20,7 @@ HISTSIZE=
 HISTFILESIZE=
 
 # STARSHELL WELCOME MSG
-source $CFG/starshell.sh
+#source $CFG/starshell.sh
+
+#neofetch
 

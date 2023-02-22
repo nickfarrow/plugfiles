@@ -48,6 +48,8 @@ exec_always --no-startup-id flameshot
 
 # I3 GAPS
 for_window [class=".*"] border pixel 0
+gaps inner 10
+gaps outer 0
 
 # Status bar
 #bar {
