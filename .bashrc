@@ -148,6 +148,8 @@ export PATH=$PATH:/home/nick/Downloads/bitcoin-23.1/bin
 export PATH=$PATH:/home/nick/install/lightning/lightningd
 export PATH=$PATH:/home/nick/install/lightning/cli
 
+export PATH=$PATH:/home/nick/install/xtensa-esp32-elf/bin
+
 #LOAD BASH_PROFILE ALSO
 if [ -f ~/.bash_profile ]; then
   . ~/.bash_profile

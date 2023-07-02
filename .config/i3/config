@@ -35,6 +35,8 @@ exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0
 # Force US keyboard layout
 exec --no-startup-id setxkbmap -layout us
 
+exec --no-startup-id xbindkeys
+
 # Compositor
 #exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
 #exec_always --no-startup-id picom --blur-background --blur-method kawase --blur-strength 8 --opacity-rule 30:'class_g="st"' --backend glx

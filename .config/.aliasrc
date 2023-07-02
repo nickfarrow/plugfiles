@@ -30,7 +30,7 @@ alias monitorstart='xrandr --output HDMI-0 --auto --above eDP-1-1 && polylaunch 
 
 alias STARWARS='telnet towel.blinkenlights.nl'
 
-alias ytdl="youtube-dl --write-thumbnail --add-metadata"
+alias ytdl="yt-dlp --write-thumbnail --add-metadata"
 
 alias mountin='sudo mount /dev/sda1 /media/sea; sudo mount /dev/sdb2 /media/SSD'
 
@@ -40,6 +40,8 @@ alias gs='git status'
 alias sps='sudo prime-switch && xinit'
 
 alias whatismyip='curl https://ifconfig.me/'
+
+alias espflash='cargo espflash'
 
 # test Alias
 
