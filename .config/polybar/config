@@ -60,8 +60,8 @@ padding-right = 2
 module-margin = 1.5
 
 modules-left = i3 
-#modules-center = 
-modules-right = volume memory cpu wlan battery temperature date powermenu
+modules-center = volume memory cpu wlan battery temperature
+modules-right = date-utc date powermenu
 
 tray-position = none
 tray-detached = true
@@ -194,6 +194,11 @@ format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${xrdb:color6:#222}
 label = %date% %time%
+
+[module/date-utc]
+type = custom/script
+exec = TZ=UTC date +"UTC: %H:%M"
+interval = 30
 
 [module/temperature]
 type = internal/temperature
