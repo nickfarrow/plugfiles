@@ -15,7 +15,8 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 # immediately write and reload history
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=
@@ -30,7 +31,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -89,23 +90,7 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -150,7 +135,12 @@ export PATH=$PATH:/home/nick/Downloads/bitcoin-23.1/bin
 export PATH=$PATH:/home/nick/install/lightning/lightningd
 export PATH=$PATH:/home/nick/install/lightning/cli
 
+# Android NDK (frostsnap mobile)
+export ANDROID_NDK_HOME=/home/nick/Android/Sdk/ndk/26.0.10792818/
+
 export PATH=$PATH:/home/nick/install/xtensa-esp32-elf/bin
+
+export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"
 
 #LOAD BASH_PROFILE ALSO
 if [ -f ~/.bash_profile ]; then
@@ -163,3 +153,5 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 alias mon2cam="deno run --unstable -A -r -q https://raw.githubusercontent.com/ShayBox/Mon2Cam/master/src/mod.ts"
 . "$HOME/.cargo/env"
+
+export SHELL=/usr/bin/fish
