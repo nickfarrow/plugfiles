@@ -11,8 +11,12 @@ set $mod Mod4
 font pango:monospace 8
 
 # Monitors
-workspace 1 output HDMI-0
-workspace 2 output DVI-I-0
+workspace 1 output DP-1
+workspace 2 output eDP-1
+workspace 3 output DP-1
+workspace 4 output eDP-1
+workspace 5 output DP-1
+workspace 6 output eDP-1
 
 # Fix optimus
 exec /usr/bin/prime-offload
@@ -49,7 +53,17 @@ exec_always --no-startup-id redshift -l -37.814:144.96332
 exec_always --no-startup-id flameshot
 
 # I3 GAPS
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
+set $transp #00000000
+
+client.focused          #005187 #005187 #005187  #005187    #005187
+client.focused_inactive #005187 #005187  #005187  #005187    $transp
+client.unfocused        #005187 #005187  #005187  #005187    $transp
+client.urgent           #005187 #005187  #005187  #005187    $transp
+client.background       $transp
+
+client.focused  border pixel 19
+client.focused #000000 #000000 #000000 #000000 #000000
 gaps inner 10
 gaps outer 0
 
@@ -74,7 +88,8 @@ exec --no-startup-id pkill polybar; polybar -r example
 # Application Shortcuts
 bindsym $mod+F1 exec firefox
 bindsym $mod+F2 exec nautilus
-bindsym $mod+F3 exec chromium
+bindsym $mod+F3 exec signal-desktop
+bindsym $mod+F4 exec xkill
 
 # printscreen takes screenshot with flameshot
 bindsym Print exec flameshot gui
