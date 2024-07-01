@@ -38,7 +38,7 @@ exec --no-startup-id xbindkeys
 exec_always --no-startup-id picom --backend glx
 
 # Launch redshift (like flux)
-exec_always --no-startup-id redshift -l -37.814:144.96332
+exec --no-startup-id redshift -l -37.814:144.96332
 
 # Flameshot screenshotting tool startup
 exec_always --no-startup-id flameshot
@@ -47,21 +47,15 @@ exec_always --no-startup-id flameshot
 exec_always --no-startup-id dunst
 
 # I3 GAPS
-for_window [class=".*"] border pixel 3
 set $transp #00000000
-
-client.focused          #005187 #005187 #005187  #005187    $transp
-client.focused_inactive #005187 #005187  #005187  #005187    $transp
-client.unfocused        #005187 #005187  #005187  #005187    $transp
-client.urgent           #005187 #005187  #005187  #005187    $transp
-client.background       $transp
-
-client.focused  border pixel 19
-client.unfocused  border pixel 0
-client.focused #000000 #000000 #000000 #000000 #000000
 gaps inner 10
 gaps outer 0
 
+client.focused          #808080 #808080 #ffffff #808080 #808080
+client.focused_inactive #000000 #000000 #000000 #000000 #000000
+client.unfocused        #000000 #000000 #000000 #000000 #000000
+client.urgent           #000000 #000000 #000000 #000000 #000000
+for_window [class="^.*"] border pixel 2
 
 exec --no-startup-id pkill polybar; polybar
 
