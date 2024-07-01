@@ -43,8 +43,6 @@ alias sps='sudo prime-switch && xinit'
 
 alias whatismyip='curl https://ifconfig.me/'
 
-alias espflash='cargo espflash'
-
 # test Alias
 
 

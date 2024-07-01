@@ -61,7 +61,7 @@ module-margin = 1.5
 
 modules-left = i3 
 modules-center = volume memory cpu wlan battery temperature
-modules-right = date-utc date powermenu
+modules-right = vpnstat date-utc date powermenu
 
 tray-position = none
 tray-detached = true
@@ -77,9 +77,11 @@ exec = echo `corona`
 interval = 600
 format-prefix-font = 5
 
-[module/nordstat]
+[module/vpnstat]
 type = custom/script
-exec = echo "VPN:`nordstat`"
+exec = echo "`mullvad status | grep -oE '[^ ]+$' | awk 'NR==1{print}'`"
+click-left = echo "mullvad toggle" && if mullvad status | grep -q "Connected"; then mullvad disconnect; else mullvad connect; fi
+format-underline = ${xrdb:color3:#222}
 interval = 5
 
 [module/crypto]

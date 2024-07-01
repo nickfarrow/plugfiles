@@ -4,7 +4,6 @@
 # WINDOWS KEY MODIFIER
 # "The button for i3 commands"
 set $mod Mod4
-#set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -19,13 +18,10 @@ workspace 5 output DP-1
 workspace 6 output eDP-1
 
 # Fix optimus
-exec /usr/bin/prime-offload
+#exec /usr/bin/prime-offload
 
 # Load bash_profile on startup
 exec --no-startup-id source $HOME/.bash_profile
-
-# Choose random background
-#exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
 # Choose random background with associated color theme
 exec --no-startup-id wal -i ~/Pictures/Wallpapers/ -l
@@ -33,17 +29,12 @@ exec --no-startup-id wal -i ~/Pictures/Wallpapers/ -l
 # I3 Lock, SCRIPT FROM https://github.com/petvas/i3lock-blur
 bindsym $mod+F12 exec ~/.config/i3lock/lock.sh 
 
-# Force monitor positions
-exec --no-startup-id xrandr --output DVI-I-0 --right-of HDMI-0
-
 # Force US keyboard layout
 exec --no-startup-id setxkbmap -layout us
 
 exec --no-startup-id xbindkeys
 
 # Compositor
-#exec_always --no-startup-id compton --backend glx --blur-method kawase --blur-strength 4 --config ~/.config/.compton.conf
-#exec_always --no-startup-id picom --blur-background --blur-method kawase --blur-strength 8 --opacity-rule 30:'class_g="st"' --backend glx
 exec_always --no-startup-id picom --backend glx
 
 # Launch redshift (like flux)
@@ -52,37 +43,27 @@ exec_always --no-startup-id redshift -l -37.814:144.96332
 # Flameshot screenshotting tool startup
 exec_always --no-startup-id flameshot
 
+# Notification service
+exec_always --no-startup-id dunst
+
 # I3 GAPS
 for_window [class=".*"] border pixel 3
 set $transp #00000000
 
-client.focused          #005187 #005187 #005187  #005187    #005187
+client.focused          #005187 #005187 #005187  #005187    $transp
 client.focused_inactive #005187 #005187  #005187  #005187    $transp
 client.unfocused        #005187 #005187  #005187  #005187    $transp
 client.urgent           #005187 #005187  #005187  #005187    $transp
 client.background       $transp
 
 client.focused  border pixel 19
+client.unfocused  border pixel 0
 client.focused #000000 #000000 #000000 #000000 #000000
 gaps inner 10
 gaps outer 0
 
-# Status bar
-#bar {
-#    # Height in pixels
-#    position top
-#    height 20 
-#    
-#    font pango:Terminus 12px    
-# 
-#    #status_command i3status
-#    # Custom i3status bar
-#    status_command ~/.config/i3/statusbar.sh
-#}
 
-
-exec --no-startup-id pkill polybar; polybar -r example
-#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id pkill polybar; polybar
 
 
 # Application Shortcuts
@@ -93,8 +74,6 @@ bindsym $mod+F4 exec xkill
 
 # printscreen takes screenshot with flameshot
 bindsym Print exec flameshot gui
-#bindsym $mod2+r exec --no-startup-id ranger
-#bindsym $mod2+c exec --no-startup-id google-chrome
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -103,9 +82,7 @@ floating_modifier $mod
 bindsym $mod+p move workspace to output right
 
 # start a terminal
-bindsym $mod+Return exec st
-#bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+\ exec xterm
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
