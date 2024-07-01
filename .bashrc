@@ -127,4 +127,4 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 . "$HOME/.cargo/env"
 
-export SHELL=/usr/bin/kitty
+export SHELL=/bin/bash
