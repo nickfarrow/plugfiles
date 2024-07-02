@@ -36,11 +36,14 @@ shopt -s checkwinsize
 # Show available files after one press of TAB
 bind 'set show-all-if-ambiguous on'
 
+case "$TERM" in
+    xterm-color|*-256color|xterm-kitty) color_prompt=yes;;
+esac
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
-color_prompt=yes
+#force_color_prompt=yes
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -85,7 +88,12 @@ xinput set-prop 'Synaptics TM3471-020' 'libinput Accel Speed' 0.3
 (cat ~/.cache/wal/sequences &)
 source ~/.cache/wal/colors-tty.sh
 source ~/.cache/wal/colors.sh
-PS1='\[\e[38;2;$((0x${color1:1:2}));$((0x${color1:3:2}));$((0x${color1:5:2}))m\]\u@\h\[\e[38;2;$((0x${color2:1:2}));$((0x${color2:3:2}));$((0x${color2:5:2}))m\]:\w $\[\e[0m\] '
+
+if [ "$color_prompt" = yes ]; then
+    PS1='\[\e[38;2;$((0x${color1:1:2}));$((0x${color1:3:2}));$((0x${color1:5:2}))m\]\u@\h\[\e[38;2;$((0x${color2:1:2}));$((0x${color2:3:2}));$((0x${color2:5:2}))m\]:\w $\[\e[0m\] '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
 
 # Set capslock to escape for vim
 setxkbmap -option caps:escape
