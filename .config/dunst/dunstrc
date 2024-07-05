@@ -1,0 +1,65 @@
+[global]
+    # Window dimensions
+    width = 350
+    height = 100
+    offset = 10x10
+
+    # Text alignment (valid options: left, center, right)
+    alignment = left
+
+    # Time to display notifications in milliseconds
+    timeout = 8000
+
+    # Notification font
+    font = Monospace 13
+
+    # Color settings
+    background = "#000000"
+    foreground = "#FFFFFF"
+
+    # Border settings
+    frame_width = 2
+    frame_color = "#ABB0B8"
+    separator_color = "#FFFFFF"
+
+    # Padding and margin
+    padding = 8
+    horizontal_padding = 10
+    corner_radius = 5
+
+    # Notification position
+    origin = top-right
+    follow = mouse
+
+    # Notification opacity (0-100)
+    transparency = 60
+
+    # Notification format
+    format = "<b>%s</b>\n%b"
+
+    # Icons
+    icon_position = left
+
+    # Mouse actions
+    mouse_left_click = do_action
+    mouse_middle_click = close_current
+    mouse_right_click = close_all
+
+
+#[urgency_low]
+#    timeout = 5000
+#    background = "#000000"
+#    foreground = "#FFFFFF"
+#    frame_color = "#FFFFFF"
+#
+#[urgency_normal]
+#    timeout = 8000
+#    background = "#000000"
+#    foreground = "#FFFFFF"
+#    frame_color = "#FFFFFF"
+#
+#[urgency_critical]
+#    timeout = 0
+#    background = "#000000"
+#    foreground = "#FFFFFF"
+#    frame_color = "#FF0000"
