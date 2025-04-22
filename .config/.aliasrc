@@ -26,8 +26,8 @@ alias chr='google-chrome'
 alias ra='ranger'
 
 alias cbnt='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
-alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.4 --backend colorz' 
-alias cbs='wal -i ~/Pictures/Wallpapers/ --backend colorz --saturate '
+alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.65' 
+alias cbs='wal -i ~/Pictures/Wallpapers/ --saturate'
 alias monitorstart='xrandr --output HDMI-0 --auto --above eDP-1-1 && polylaunch && cb'
 
 alias STARWARS='telnet towel.blinkenlights.nl'
@@ -39,6 +39,8 @@ alias mountin='sudo mount /dev/sda1 /media/sea; sudo mount /dev/sdb2 /media/SSD'
 alias pipu='python3 -m pip install --user'
 
 alias gs='git status'
+alias gl='git log'
+alias grs='git restore --staged .'
 alias sps='sudo prime-switch && xinit'
 
 alias whatismyip='curl https://ifconfig.me/'
