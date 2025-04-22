@@ -46,6 +46,9 @@ exec_always --no-startup-id flameshot
 # Notification service
 exec_always --no-startup-id dunst
 
+# Battery notif
+exec --no-startup-id i3-battery-popup -n
+
 # I3 GAPS
 set $transp #00000000
 gaps inner 10
