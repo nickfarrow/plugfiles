@@ -27,7 +27,7 @@ exec --no-startup-id source $HOME/.bash_profile
 exec --no-startup-id wal -i ~/Pictures/Wallpapers/ -l
 
 # I3 Lock, SCRIPT FROM https://github.com/petvas/i3lock-blur
-bindsym $mod+F12 exec ~/.config/i3lock/lock.sh 
+#bindsym $mod+F12 exec ~/.config/i3lock/lock.sh 
 
 # Force US keyboard layout
 exec --no-startup-id setxkbmap -layout us
@@ -49,6 +49,11 @@ exec_always --no-startup-id dunst
 # Battery notif
 exec --no-startup-id i3-battery-popup -n
 
+# Clipboard manager
+exec --no-startup-id copyq
+bindsym $mod+c exec --no-startup-id copyq show
+bindsym $mod+Shift+c exec --no-startup-id copyq clear
+
 # I3 GAPS
 set $transp #00000000
 gaps inner 10
@@ -68,6 +73,24 @@ bindsym $mod+F1 exec firefox
 bindsym $mod+F2 exec nautilus
 bindsym $mod+F3 exec signal-desktop
 bindsym $mod+F4 exec xkill
+
+# Very Important
+bindsym $mod+shift+F1 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/your-phone-ringing.mp3
+bindsym $mod+shift+F2 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/oiia-oiia.mp3
+bindsym $mod+shift+F3 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/hamood.mp3
+bindsym $mod+shift+F4 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/taunt-11.mp3
+bindsym $mod+F5 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/bing-chilling.mp3
+bindsym $mod+F6 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/dump-it.mp3
+bindsym $mod+F7 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/there-is-no-second-best.mp3
+bindsym $mod+F8 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/bitcoin.mp3
+bindsym $mod+F9 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/bruhh.mp3
+bindsym $mod+F10 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/huh-grunt.mp3
+bindsym $mod+F11 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/metal-clang.mp3
+bindsym $mod+F12 exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/speaker-static.mp3
+bindsym $mod+Home exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/lets-go-gambling.mp3
+bindsym $mod+End exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/siren.mp3
+bindsym $mod+Insert exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/hmmm.mp3
+bindsym $mod+Delete exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/error.mp3
 
 # printscreen takes screenshot with flameshot
 bindsym Print exec flameshot gui
@@ -196,7 +219,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r exec --no-startup-id pkill picom; restart
 # exit i3 (logs you out of your X session)
