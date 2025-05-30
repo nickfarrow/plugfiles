@@ -1,63 +1,61 @@
 #!/bin/bash
-# Nick Farrow 2019
+# Nick Farrow 2019 (Updated 2024)
 
-VERTICAL=true
-
-# Whenever out mouse is past XSPLIT in the X-direction,
-# A hotkey is sent to OBS to change scenes
-XSPLIT=1080
-
-# Hotkeys for left and right scenes
-LEFT='F7'
-RIGHT='F8'
-
+VERTICAL=false
+XSPLIT=1920  # Assuming 1920x1080 resolution for the first monitor
+LEFT='alt+F11'
+RIGHT='alt+F12'
 PAST=$RIGHT
 
-
 while getopts "vp:" opt; do
-	case ${opt} in
-		v )
-			VERTICAL=true
-			XSPLIT=1080
-			
-			TMPSTORE=$LEFT
-			LEFT=$RIGHT
-			RIGHT=$TMPSTORE
-		;;
-		p )
-			XSPLIT=$OPTARG
-		;;
-		\? )
-			echo "Invalid option" 1>&2
-			exit 1
-		;;
-		: )
-			echo "Invalid option, $OPTARG requires an argument" 1>&2
-			exit 1
-		;;
-	esac
+    case ${opt} in
+        v )
+            VERTICAL=true
+            XSPLIT=1080
+            
+            # Swap LEFT and RIGHT
+            TMPSTORE=$LEFT
+            LEFT=$RIGHT
+            RIGHT=$TMPSTORE
+        ;;
+        p )
+            XSPLIT=$OPTARG
+        ;;
+        \? )
+            echo "Usage: $0 [-v] [-p XSPLIT]" 1>&2
+            echo "  -v: Vertical mode" 1>&2
+            echo "  -p XSPLIT: Set split position (default: 1920)" 1>&2
+            exit 1
+        ;;
+    esac
 done
 
-printf "\n\n\n Starting OBS:"
+obs &
 
-obs | while :
-	do
-		if [ "$VERTICAL" = false ] ; then
-			XCOORD=$(xdotool getmouselocation | cut -d : -f 2 | cut -d ' ' -f 1)
-		else
-			XCOORD=$(xdotool getmouselocation | cut -d : -f 3 | cut -d ' ' -f 1)
-		fi
 
-		if [ "$XCOORD" -lt "$XSPLIT" ] && [ "$PAST" == "$RIGHT" ]; then
-			WINDOWID=$(xdotool search --name OBS | tail -1)
-			xdotool key --window $WINDOWID $LEFT
-			PAST=$LEFT
-			echo "CHANGE LEFT"
+while true; do
+    if [ "$VERTICAL" = true ]; then
+        COORD=$(xdotool getmouselocation --shell | grep Y= | cut -d= -f2)
+    else
+        COORD=$(xdotool getmouselocation --shell | grep X= | cut -d= -f2)
+    fi
 
-		elif [ "$XCOORD" -gt "$XSPLIT" ] && [ "$PAST" == "$LEFT" ]; then
-			WINDOWID=$(xdotool search --name OBS | tail -1)
-			xdotool key --window $WINDOWID $RIGHT
-			PAST=$RIGHT
-			echo "CHANGE RIGHT"
-		fi
-	done
+    WINDOWID=$(xdotool search --name "OBS" | tail -1)
+
+    if [ -z "$WINDOWID" ]; then
+        echo "OBS window not found. Exiting."
+        exit 1
+    fi
+
+    if [ "$COORD" -le "$XSPLIT" ] && [ "$PAST" = "$RIGHT" ]; then
+        xdotool key --window $WINDOWID $LEFT
+        PAST=$LEFT
+        echo "CHANGE LEFT"
+    elif [ "$COORD" -gt "$XSPLIT" ] && [ "$PAST" = "$LEFT" ]; then
+        xdotool key --window $WINDOWID $RIGHT
+        PAST=$RIGHT
+        echo "CHANGE RIGHT"
+    fi
+
+    sleep 0.01
+done

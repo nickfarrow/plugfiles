@@ -48,7 +48,7 @@ font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
 font-2 = siji:pixelsize=16;1
 font-3 = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular
 font-4 = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular
-font-5 = "Noto Color Emoji:pixelsize=16:style=Regular:scale=10;2"
+font-5 = Noto Color Emoji:pixelsize=16:style=Regular:scale=10;2
 
 ;---------------;
 ; MISCELLANEOUS ;
@@ -71,12 +71,6 @@ tray-detached = true
 ; MODULES ;
 ;---------;
 
-[module/corona]
-type = custom/script
-exec = echo `corona`
-interval = 600
-format-prefix-font = 5
-
 [module/vpnstat]
 type = custom/script
 exec = echo "`mullvad status | grep -oE '[^ ]+$' | awk 'NR==1{print}'`"
@@ -87,11 +81,6 @@ interval = 5
 [module/crypto]
 type = custom/script
 exec = crypto
-interval = 60
-
-[module/optimusgfx]
-type = custom/script
-exec = optimus-manager --print-mode | grep mode | tr " " \\n | tail -1
 interval = 60
 
 [module/mpd]

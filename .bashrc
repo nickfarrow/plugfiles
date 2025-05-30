@@ -112,6 +112,8 @@ export PATH=$PATH:/home/nick/install/lightning/cli
 export ANDROID_NDK_HOME=/home/nick/Android/Sdk/ndk/27.0.11718014
 export ANDROID_HOME=/home/nick/Android/Sdk
 
+export PATH="/opt/flutter/bin:$PATH"
+
 export PATH=$PATH:/home/nick/install/xtensa-esp32-elf/bin
 
 export CPATH="$(clang -v 2>&1 | grep "Selected GCC installation" | rev | cut -d' ' -f1 | rev)/include"

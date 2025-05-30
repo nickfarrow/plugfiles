@@ -1,5 +1,4 @@
 general {
-        #output_format = "i3bar"
         colors = true
         interval = 5
 }
@@ -32,7 +31,7 @@ tztime local {
 
 cpu_temperature 0 {
         format = "T: %degrees °C"
-        path = "/sys/class/thermal/thermal_zone19/temp"
+        path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
 disk "/" {
