@@ -24,7 +24,7 @@ workspace 6 output eDP-1
 exec --no-startup-id source $HOME/.bash_profile
 
 # Choose random background with associated color theme
-exec --no-startup-id wal -i ~/Pictures/Wallpapers/ -l
+exec --no-startup-id wal -i ~/Pictures/Wallpapers/
 
 # I3 Lock, SCRIPT FROM https://github.com/petvas/i3lock-blur
 #bindsym $mod+F12 exec ~/.config/i3lock/lock.sh 
@@ -38,7 +38,8 @@ exec --no-startup-id xbindkeys
 exec_always --no-startup-id picom --backend glx
 
 # Launch redshift (like flux)
-exec --no-startup-id redshift -l -37.814:144.96332
+exec --no-startup-id redshift -l -37.814:144.96332 -t 6500K:3000K
+#exec --no-startup-id redshift -l 3.1408:101.69320 -t 6500K:3000K
 
 # Flameshot screenshotting tool startup
 exec_always --no-startup-id flameshot
@@ -223,7 +224,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r exec --no-startup-id pkill picom; restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 session?' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3 session?' -B 'Yes, exit i3' 'pkill -f copyq; sleep 0.1; i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

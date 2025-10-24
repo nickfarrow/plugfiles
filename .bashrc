@@ -110,7 +110,15 @@ export PATH=$PATH:/home/nick/install/lightning/cli
 
 # Android NDK (frostsnap mobile)
 export ANDROID_NDK_HOME=/home/nick/Android/Sdk/ndk/27.0.11718014
+export ANDROID_NDK_ROOT=/home/nick/Android/Sdk/ndk/27.0.11718014
+export NDK_HOME=/home/nick/Android/Sdk/ndk/27.0.11718014
 export ANDROID_HOME=/home/nick/Android/Sdk
+export ANDROID_SDK_ROOT=/home/nick/Android/Sdk
+
+export CC_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang
+export CXX_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang++
+export AR_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
+
 
 export PATH="/opt/flutter/bin:$PATH"
 
@@ -130,3 +138,9 @@ export LANG="en_US.UTF-8"
 . "$HOME/.cargo/env"
 
 export SHELL=/bin/bash
+export CC_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang
+export CXX_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang++
+export AR_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
+export CC_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang
+export CXX_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi21-clang++
+export AR_armv7_linux_androideabi=/home/nick/Android/Sdk/ndk/27.0.11718014/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar

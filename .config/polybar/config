@@ -2,11 +2,11 @@
 ; COLORS ;
 ;--------;
 [colors]
-background = ${xrdb:color1:#222}
+background = ${xrdb:color3:#222}
 background-alt = #444
 foreground = #000000
 foreground-alt = #000000
-primary = ${xrdb:color3:#222}
+primary = ${xrdb:color2:#222}
 secondary = ${xrdb:color14:#222}
 c1 = ${xrdb:color4:#222}
 c2 = ${xrdb:color5:#222}
@@ -70,13 +70,11 @@ tray-detached = true
 ;---------;
 ; MODULES ;
 ;---------;
-
 [module/vpnstat]
 type = custom/script
-exec = echo "`mullvad status | grep -oE '[^ ]+$' | awk 'NR==1{print}'`"
-click-left = echo "mullvad toggle" && if mullvad status | grep -q "Connected"; then mullvad disconnect; else mullvad connect; fi
-format-underline = ${xrdb:color3:#222}
-interval = 5
+exec = ~/.config/polybar/vpnstat.sh status
+click-left = ~/.config/polybar/vpnstat.sh toggle
+interval = 1
 
 [module/crypto]
 type = custom/script
