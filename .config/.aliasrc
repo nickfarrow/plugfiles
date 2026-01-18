@@ -27,7 +27,7 @@ alias ra='ranger'
 
 alias cbnt='feh --randomize --bg-fill ~/Pictures/Wallpapers/*'
 #alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.65' 
-alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.3 --backend colorthief'
+alias cb='wal -i ~/Pictures/Wallpapers/ --saturate 0.5 --backend colorthief'
 #alias cbs='wal -i ~/Pictures/Wallpapers/ --saturate'
 alias monitorstart='xrandr --output HDMI-0 --auto --above eDP-1-1 && polylaunch && cb'
 

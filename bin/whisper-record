@@ -1,0 +1,58 @@
+#!/bin/bash
+# Toggle whisper transcription: record audio, then transcribe when stopped
+
+WHISPER_DIR="$HOME/ai/v2t/whisper.cpp"
+MODEL="$WHISPER_DIR/models/ggml-base.en.bin"
+AUDIO_FILE="/tmp/whisper_recording.wav"
+PID_FILE="/tmp/whisper_record.pid"
+
+# Check if recording is active
+if [ -f "$PID_FILE" ]; then
+    # Stop recording
+    PID=$(cat "$PID_FILE")
+
+    dunstify -u normal "Whisper" "Finishing recording..." -t 1500
+
+    # Keep recording for 1.5 more seconds to capture trailing speech
+    sleep 1.5
+
+    # Now stop recording
+    kill -INT "$PID" 2>/dev/null
+    wait "$PID" 2>/dev/null
+
+    sleep 0.3
+
+    dunstify -u normal "Whisper" "Processing..." -t 2000
+
+    # Transcribe the recorded audio
+    cd "$WHISPER_DIR" || exit 1
+
+    if [ -f "$AUDIO_FILE" ] && [ -s "$AUDIO_FILE" ]; then
+        # Run transcription and extract just the text (no timestamps)
+        TEXT=$(./build/bin/whisper-cli -m "$MODEL" -f "$AUDIO_FILE" -nt -np 2>&1 | grep -v "whisper_" | grep -v "system_info" | grep -v "main:" | grep -v "^$" | xargs)
+
+        if [ -n "$TEXT" ]; then
+            echo -n "$TEXT" | copyq copy -
+            dunstify -u normal "Whisper" "Copied to clipboard!" -t 2000
+        else
+            dunstify -u critical "Whisper" "No speech detected" -t 3000
+        fi
+    else
+        dunstify -u critical "Whisper" "No audio recorded" -t 3000
+    fi
+
+    # Cleanup
+    rm -f "$PID_FILE" "$AUDIO_FILE"
+else
+    # Start recording
+    dunstify -u normal "Whisper" "Recording started... 🎤" -t 2000
+
+    # Clear any old audio file
+    rm -f "$AUDIO_FILE"
+
+    # Record audio with arecord (don't redirect stderr as it needs to output status)
+    arecord -f S16_LE -r 16000 -c 1 "$AUDIO_FILE" 2>/dev/null &
+
+    # Save PID
+    echo $! > "$PID_FILE"
+fi

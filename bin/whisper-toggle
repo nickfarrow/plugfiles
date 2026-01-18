@@ -1,0 +1,70 @@
+#!/bin/bash
+# Toggle whisper transcription: press once to start, press again to stop & copy to clipboard
+
+WHISPER_DIR="$HOME/ai/v2t/whisper.cpp"
+MODEL="$WHISPER_DIR/models/ggml-base.en.bin"
+PID_FILE="/tmp/whisper_stream.pid"
+TRANSCRIPT_FILE="/tmp/whisper_transcript.txt"
+
+# Check if whisper is running
+if [ -f "$PID_FILE" ]; then
+    # Stop recording
+    PID=$(cat "$PID_FILE")
+
+    dunstify -u normal "Whisper" "Stopping recording..." -t 2000
+
+    # Wait for whisper to finish processing the current audio chunk
+    sleep 3
+
+    # Kill the process gracefully (SIGTERM allows file to be flushed)
+    kill -TERM "$PID" 2>/dev/null
+
+    # Wait for process to exit and file to be written
+    sleep 0.5
+
+    # Force kill if still running
+    kill -9 "$PID" 2>/dev/null
+
+    # Wait a bit more for file system
+    sleep 0.2
+
+    # Extract clean transcript (just the text, no timestamps or debug info)
+    if [ -f "$TRANSCRIPT_FILE" ] && [ -s "$TRANSCRIPT_FILE" ]; then
+        # Extract text after the timestamps "] "
+        TEXT=$(grep -oP "\] +\K.*" "$TRANSCRIPT_FILE" | grep -v "^$" | tr '\n' ' ')
+
+        if [ -n "$TEXT" ]; then
+            echo -n "$TEXT" | copyq copy -
+            dunstify -u normal "Whisper" "Copied to clipboard!" -t 2000
+        else
+            dunstify -u critical "Whisper" "No speech detected" -t 3000
+        fi
+    else
+        dunstify -u critical "Whisper" "No transcript generated" -t 3000
+    fi
+
+    # Cleanup
+    rm -f "$PID_FILE" "$TRANSCRIPT_FILE"
+else
+    # Start recording
+    cd "$WHISPER_DIR" || exit 1
+
+    # Clear any old transcript
+    rm -f "$TRANSCRIPT_FILE"
+
+    dunstify -u normal "Whisper" "Recording started... 🎤" -t 2000
+
+    # Start whisper-stream in background, using -f flag for clean output
+    ./build/bin/whisper-stream \
+        -m "$MODEL" \
+        -t 6 \
+        --step 0 \
+        --length 10000 \
+        -vth 0.75 \
+        --keep 0 \
+        -f "$TRANSCRIPT_FILE" \
+        >/dev/null 2>&1 &
+
+    # Save PID
+    echo $! > "$PID_FILE"
+fi

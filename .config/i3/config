@@ -34,6 +34,8 @@ exec --no-startup-id setxkbmap -layout us
 
 exec --no-startup-id xbindkeys
 
+bindsym $mod+Tab exec --no-startup-id ~/.config/i3/window-switcher.sh
+
 # Compositor
 exec_always --no-startup-id picom --backend glx
 
@@ -95,6 +97,9 @@ bindsym $mod+Delete exec ffplay -nodisp -autoexit ~/Downloads/audio/soundboard/e
 
 # printscreen takes screenshot with flameshot
 bindsym Print exec flameshot gui
+
+# Toggle whisper voice transcription (press to start, press again to stop & copy to clipboard)
+bindsym $mod+t exec --no-startup-id ~/plugfiles/bin/whisper-record
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
