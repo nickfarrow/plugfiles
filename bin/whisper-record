@@ -5,30 +5,50 @@ WHISPER_DIR="$HOME/ai/v2t/whisper.cpp"
 MODEL="$WHISPER_DIR/models/ggml-base.en.bin"
 AUDIO_FILE="/tmp/whisper_recording.wav"
 PID_FILE="/tmp/whisper_record.pid"
+LOCK_FILE="/tmp/whisper_record.lock"
 
-# Check if recording is active
-if [ -f "$PID_FILE" ]; then
-    # Stop recording
+# Kill any leftover whisper-cli processes from previous runs
+pkill -f "whisper-cli.*whisper_recording.wav" 2>/dev/null
+
+# Check if recording is active (PID file exists AND process is alive)
+if [ -f "$PID_FILE" ] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+    # Prevent double-tap race: if already transcribing, bail out
+    if [ -f "$LOCK_FILE" ]; then
+        dunstify -u normal "Whisper" "Already processing..." -t 1500
+        exit 0
+    fi
+    touch "$LOCK_FILE"
+
     PID=$(cat "$PID_FILE")
+    rm -f "$PID_FILE"
 
     dunstify -u normal "Whisper" "Finishing recording..." -t 1500
 
     # Keep recording for 1.5 more seconds to capture trailing speech
     sleep 1.5
 
-    # Now stop recording
+    # Stop arecord and wait for it to exit
     kill -INT "$PID" 2>/dev/null
-    wait "$PID" 2>/dev/null
+    for i in $(seq 1 20); do
+        kill -0 "$PID" 2>/dev/null || break
+        sleep 0.1
+    done
+    kill -9 "$PID" 2>/dev/null
 
     sleep 0.3
 
-    dunstify -u normal "Whisper" "Processing..." -t 2000
+    dunstify -u normal "Whisper" "Processing..." -t 5000
+
+    # Fix wav header — arecord may not finalize it when killed from another shell
+    FIXED_FILE="/tmp/whisper_recording_fixed.wav"
+    ffmpeg -y -i "$AUDIO_FILE" -ar 16000 -ac 1 -f wav "$FIXED_FILE" 2>/dev/null
+    mv -f "$FIXED_FILE" "$AUDIO_FILE"
 
     # Transcribe the recorded audio
-    cd "$WHISPER_DIR" || exit 1
+    cd "$WHISPER_DIR" || { rm -f "$LOCK_FILE"; exit 1; }
 
     if [ -f "$AUDIO_FILE" ] && [ -s "$AUDIO_FILE" ]; then
-        # Run transcription and extract just the text (no timestamps)
+        # Run transcription
         TEXT=$(./build/bin/whisper-cli -m "$MODEL" -f "$AUDIO_FILE" -nt -np 2>&1 | grep -v "whisper_" | grep -v "system_info" | grep -v "main:" | grep -v "^$" | xargs)
 
         if [ -n "$TEXT" ]; then
@@ -42,15 +62,18 @@ if [ -f "$PID_FILE" ]; then
     fi
 
     # Cleanup
-    rm -f "$PID_FILE" "$AUDIO_FILE"
+    rm -f "$AUDIO_FILE" "$LOCK_FILE"
 else
+    # Clean up stale PID file if process is dead
+    rm -f "$PID_FILE" "$LOCK_FILE"
+
     # Start recording
     dunstify -u normal "Whisper" "Recording started... 🎤" -t 2000
 
     # Clear any old audio file
     rm -f "$AUDIO_FILE"
 
-    # Record audio with arecord (don't redirect stderr as it needs to output status)
+    # Record audio with arecord
     arecord -f S16_LE -r 16000 -c 1 "$AUDIO_FILE" 2>/dev/null &
 
     # Save PID
